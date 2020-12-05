@@ -1,7 +1,7 @@
 package com.harshi.sandy.studentmgmt.controller;
 
 import com.harshi.sandy.studentmgmt.model.Student;
-import com.harshi.sandy.studentmgmt.repository.StudentRepository;
+import com.harshi.sandy.studentmgmt.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,21 +11,21 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    StudentRepository studentRepository;
+    StudentService studentService;
 
     @GetMapping
     public List<Student> hello() {
-        return studentRepository.findAll();
+        return studentService.findAll();
     }
 
     @PostMapping
     public Student save(@RequestBody Student student) {
-        return studentRepository.save(student);
+        return studentService.save(student);
     }
 
     @DeleteMapping
     public void delete(@RequestBody Student student){
-        studentRepository.delete(student);
+        studentService.delete(student);
     }
 
 
